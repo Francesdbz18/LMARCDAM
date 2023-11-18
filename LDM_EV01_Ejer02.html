@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html> 
+<head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>Reserva</title> 
+</head> 
+<body> 
+  <form name="reserva" id="resviaje"> 
+    <table border="0" cellpadding="4" cellspacing="10"> 
+      <tr valign="top"> 
+        <td> 
+          <h1>Formulario de reserva de viaje</h1> 
+          <table align="center" border="0"> 
+ 
+            <tr align="left"> 
+              <td>Nombre completo*: <br> <input type="text" name="fullname" size="20"> </td>
+            </tr>
+            <tr align="left"> <td>Email*: <br><input type="password" name="password" size="20"></td></tr> 
+ 
+            <tr align="left">
+              <td>Seleccione el paquete*: <br> <select name="webserv" size="1"> 
+                <option value="Alicante" selected> 
+                 Alicante
+                </option> 
+                <option value="Valencia"> 
+                 Valencia
+                </option> 
+                <option value="Barcelona"> 
+                 Barcelona
+                </option> 
+                <option value="Oviedo"> 
+                  Oviedo 
+                </option> 
+                <option value="Almería"> 
+                  Almería 
+                </option> 
+              </select> </td> 
+
+            </tr>
+            <tr align="left"> 
+              <td>Please specify<br>your role:</td> 
+              <td> 
+                 <input name="role" value="admin" type="radio">
+                        Admin<br> 
+                 <input name="role" value="engineer" type="radio">
+                       Engineer<br> 
+                 <input name="role" value="manager" type="radio">
+                       Manager<br> 
+                 <input name="role" value="guest" type="radio">Guest 
+              </td> 
+            </tr> 
+ 
+            <tr> 
+              <td colspan="2" align="left" height="25" valign="top"
+                  width="121"> 
+                <p></p> 
+              </td> 
+            </tr> 
+ 
+            <tr align="left"> 
+              <td>Single Sign-on<br>to the following:</td> 
+              <td> 
+                <input name="mail" type="checkbox">Mail<br> 
+                <input name="payroll" type="checkbox">Payroll<br> 
+                <input name="selfservice" type="checkbox">
+                             Self-service<br> 
+              </td> 
+            </tr> 
+          </table> 
+        </td> 
+      </tr> 
+ 
+      <tr> 
+        <td colspan="2" align="center"> 
+          <input value="Login" type="submit"> 
+          <input type="reset"> 
+        </td> 
+      </tr> 
+    </table> 
+  </form> 
+</body> 
+</html>
