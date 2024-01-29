@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE facturas [
+  <!ELEMENT facturas (factura+)>
+    <!ELEMENT factura (datosCliente, datosTicket)>
+    <!ELEMENT datosCliente (nombre, apellido1, apellido2, dni, telefono+)>
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT apellido1 (#PCDATA)>
+    <!ELEMENT apellido2 (#PCDATA)>
+    <!ELEMENT dni (#PCDATA)>
+    <!ELEMENT telefono (#PCDATA)>
+    <!ELEMENT datosTicket EMPTY>
+    <!ATTLIST datosCliente idCliente ID #REQUIRED>
+    ]>
+    
+    <facturas>
+    <factura>
+    <datosCliente idCliente = "A01">
+      <nombre>Juanito</nombre>
+      <apellido1>Alimaña</apellido1>
+      <apellido2>de Navaja</apellido2>
+      <dni>Y6942069L</dni>
+      <telefono>694206942</telefono>
+    </datosCliente>
+    <datosTicket></datosTicket>
+    </factura>
+    </facturas>
