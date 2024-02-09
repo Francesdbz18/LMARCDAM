@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="factura" type="facturaType"/>
+  <xs:complexType name="poblacionType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="cod_postal" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="datos_empresaType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="nombre"/>
+      <xs:element type="xs:string" name="dir"/>
+      <xs:element type="poblacionType" name="poblacion"/>
+      <xs:element type="xs:string" name="provincia"/>
+      <xs:element type="xs:string" name="cif"/>
+      <xs:element type="xs:string" name="telefono"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="datos_clienteType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="nombre"/>
+      <xs:element type="xs:string" name="dir_env"/>
+      <xs:element type="poblacionType" name="poblacion"/>
+      <xs:element type="xs:string" name="provincia"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="n_cli"/>
+  </xs:complexType>
+  <xs:complexType name="lineaType">
+    <xs:sequence>
+      <xs:element name="ref">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="MII93000F/8"/>
+            <xs:enumeration value="MB8QDIP4"/>
+            <xs:enumeration value="MEDD512M32"/>
+            <xs:enumeration value="HD250GSA7"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="desc">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="MICRO PENTIUM IV 3000MHZ FB800"/>
+            <xs:enumeration value="PLACA BASE QDI P4"/>
+            <xs:enumeration value="DIMM DDR 512MB 3200"/>
+            <xs:enumeration value="DISCO DURO 250GB S-ATA 7200"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cant">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="precio">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="230"/>
+            <xs:enumeration value="180"/>
+            <xs:enumeration value="40"/>
+            <xs:enumeration value="120"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="importe">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="266.80"/>
+            <xs:enumeration value="208.80"/>
+            <xs:enumeration value="92.80"/>
+            <xs:enumeration value="556.80"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="datos_facturaType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="fecha"/>
+      <xs:element type="lineaType" name="linea" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="xs:string" name="base"/>
+      <xs:element type="xs:string" name="cuota_iva"/>
+      <xs:element type="xs:string" name="total"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="n_ped"/>
+    <xs:attribute type="xs:string" name="iva"/>
+    <xs:attribute type="xs:string" name="f_pago"/>
+    <xs:attribute type="xs:string" name="moneda"/>
+  </xs:complexType>
+  <xs:complexType name="facturaType">
+    <xs:sequence>
+      <xs:element type="datos_empresaType" name="datos_empresa"/>
+      <xs:element type="datos_clienteType" name="datos_cliente"/>
+      <xs:element type="datos_facturaType" name="datos_factura"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="n_fac"/>
+  </xs:complexType>
+</xs:schema>
