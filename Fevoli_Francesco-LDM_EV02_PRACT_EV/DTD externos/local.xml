@@ -1,0 +1,72 @@
+<!DOCTYPE local SYSTEM "local.dtd">
+<local>
+    <factura>
+        <cliente idCliente="1">
+            <nombre>Francesco</nombre>
+            <apellidos>Bernoulli</apellidos>
+            <dni>12345678A</dni>
+            <telefono>123456789</telefono>
+        </cliente>
+        <resguardo>
+            <forma_pago>tarjeta</forma_pago>
+            <importe_total>50.00</importe_total>
+        </resguardo>
+        <alquileres>
+            <alquiler>
+                <patinete idPatinete="1">
+                    <modelo>Xiaomi M365</modelo>
+                    <marca>Xiaomi</marca>
+                    <autonomia>30 km</autonomia>
+                    <usuarios_anteriores>
+                        <nombre>Pablo</nombre>
+                        <apellidos>López Martínez</apellidos>
+                    </usuarios_anteriores>
+                    <usuarios_anteriores>
+                        <nombre>Juan</nombre>
+                        <apellidos>Martorell</apellidos>
+                    </usuarios_anteriores>
+                    <usuarios_anteriores>
+                        <nombre>David</nombre>
+                        <apellidos>G. Lage</apellidos>
+                    </usuarios_anteriores>
+                    <valoracion>3</valoracion>
+                </patinete>
+                <fecha_devolucion>2024-02-20</fecha_devolucion>
+            </alquiler>
+        </alquileres>
+    </factura>
+    <factura>
+        <cliente idCliente="2">
+            <nombre>María</nombre>
+            <apellidos>Gómez Sánchez</apellidos>
+            <dni>98765432B</dni>
+            <telefono>987654321</telefono>
+        </cliente>
+        <resguardo>
+            <forma_pago>efectivo</forma_pago>
+            <importe_total>30.00</importe_total>
+        </resguardo>
+        <compras>
+            <compra>
+                <patinete idPatinete="2">
+                    <modelo>Segway Ninebot ES4</modelo>
+                    <marca>Segway</marca>
+                    <autonomia>45 km</autonomia>
+                    <usuarios_anteriores>
+                        <nombre>Laura</nombre>
+                        <apellidos>García Fernández</apellidos>
+                    </usuarios_anteriores>
+                    <usuarios_anteriores>
+                        <nombre>Juan Pablo</nombre>
+                        <apellidos>Ortíz Cano</apellidos>
+                    </usuarios_anteriores>
+                    <usuarios_anteriores>
+                        <nombre>Melina</nombre>
+                        <apellidos>Silva De Cesare</apellidos>
+                    </usuarios_anteriores>
+                    <valoracion>5</valoracion>
+                </patinete>
+            </compra>
+        </compras>
+    </factura>
+</local>

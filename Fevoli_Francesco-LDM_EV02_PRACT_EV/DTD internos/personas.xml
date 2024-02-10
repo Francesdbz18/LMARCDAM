@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE personas [
+        <!ELEMENT personas (persona+)>
+        <!ELEMENT persona (nombre, apellidos, telefono, (nacimiento)?, direccion+, varon?) >
+        <!ELEMENT nombre (#PCDATA)>
+        <!ELEMENT apellidos (#PCDATA)>
+        <!ELEMENT telefono (#PCDATA)>
+        <!ELEMENT nacimiento EMPTY>
+        <!ATTLIST nacimiento dia CDATA "1"
+                mes CDATA "1"
+                anyo CDATA "1900">
+        <!ELEMENT direccion (calle, ciudad, codigo_postal)>
+        <!ELEMENT calle (#PCDATA)>
+        <!ELEMENT ciudad (#PCDATA)>
+        <!ELEMENT codigo_postal (#PCDATA)>
+        <!ELEMENT varon EMPTY>
+        ]>
+<personas>
+    <persona>
+        <nombre>Juan</nombre>
+        <apellidos>Pardo</apellidos>
+        <telefono>656696571</telefono>
+        <nacimiento dia="3" mes="2" anyo="1969"></nacimiento>
+        <direccion>
+            <calle>Caoba, 1</calle>
+            <ciudad>Madrid</ciudad>
+            <codigo_postal>28005</codigo_postal>
+        </direccion>
+    </persona>
+    <persona>
+        <nombre>María</nombre>
+        <apellidos>Lionza</apellidos>
+        <telefono>656696572</telefono>
+        <direccion>
+            <calle>Alcalá, 420</calle>
+            <ciudad>Madrid</ciudad>
+            <codigo_postal>28006</codigo_postal>
+        </direccion>
+    </persona>
+</personas>

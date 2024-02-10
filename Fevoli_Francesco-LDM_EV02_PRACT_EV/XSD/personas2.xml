@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<personas xsi:noNamespaceSchemaLocation="personas2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <persona>
+        <nombre>Juan</nombre>
+        <apellidos>Pardo</apellidos>
+        <nacimiento dia="10" mes="4" anyo="1982"></nacimiento>
+        <direccion>
+            <calle>Caoba, 1</calle>
+            <ciudad>Madrid</ciudad>
+            <codigo_postal>28005</codigo_postal>
+        </direccion>
+        <varon/>
+    </persona>
+    <persona>
+        <nombre>María</nombre>
+        <apellidos>López</apellidos>
+        <direccion>
+            <calle>Roncato, 1, Illescas</calle>
+            <ciudad>Toledo</ciudad>
+            <codigo_postal>45200</codigo_postal>
+        </direccion>
+        <direccion>
+            <calle>Paseo de la Esperanza 15, 1º A</calle>
+            <ciudad>Madrid</ciudad>
+            <codigo_postal>28005</codigo_postal>
+        </direccion>
+    </persona>
+</personas>

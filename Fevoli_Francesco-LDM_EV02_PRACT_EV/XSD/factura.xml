@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?> 
-<factura n_fac="999"> 
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<factura n_fac="0999" xsi:noNamespaceSchemaLocation="factura2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <datos_empresa>
         <nombre>Equipos Digitales S.L.</nombre>
         <dir>Av. Valladolid</dir>
         <poblacion cod_postal="28043">Madrid</poblacion>
         <provincia>Madrid</provincia>
         <cif>Q-9876543</cif>
-        <telefono/>
+        <telefono>917776688</telefono>
     </datos_empresa>
-    <datos_cliente n_cli="879">
-        <nombre>DarÃ­o, Bueno GutiÃ©rrez</nombre>
-        <dir_env>Av. Oporto nÂº7 4Âºd</dir_env>
+    <datos_cliente n_cli="0879">
+        <nombre>Darío, Bueno Gutiérrez</nombre>
+        <dir_env>Av. Oporto nº7 4ºd</dir_env>
         <poblacion cod_postal="28043">Madrid</poblacion>
         <provincia>Madrid</provincia>
     </datos_cliente>
-    <datos_factura n_ped="731" iva="16" f_pago= "efectivo" moneda="euro">
+    <datos_factura n_ped="0731" iva="16" f_pago= "efectivo">
         <fecha>2005-12-01</fecha>
         <linea>
             <ref>MII93000F/8</ref>

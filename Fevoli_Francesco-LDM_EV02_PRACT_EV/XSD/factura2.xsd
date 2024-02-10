@@ -1,0 +1,137 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:simpleType name="tipoID">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:pattern value="\d{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoTelefono">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="917776688|917776699"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoPago">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="efectivo"/>
+            <xs:enumeration value="tarjeta"/>
+            <xs:enumeration value="plazos"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoFecha">
+        <xs:restriction base="xs:date"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoReferencia">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="5"/>
+            <xs:maxLength value="15"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoDescripcion">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Tipo para precios -->
+    <xs:simpleType name="tipoPrecio">
+        <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="7"/>
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoReal">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoPostal">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:totalDigits value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoIVA">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:totalDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="datos_empresa">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+                <xs:element name="dir" type="xs:string"/>
+                <xs:element name="poblacion" type="poblacionType"/>
+                <xs:element name="provincia" type="xs:string"/>
+                <xs:element name="cif" type="xs:string"/>
+                <xs:element name="telefono" type="tipoTelefono" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="datos_cliente">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+                <xs:element name="dir_env" type="xs:string"/>
+                <xs:element name="poblacion" type="poblacionType"/>
+                <xs:element name="provincia" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="n_cli" type="tipoID" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="datos_factura">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="fecha" type="tipoFecha"/>
+                <xs:element name="linea" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="ref" type="tipoReferencia"/>
+                            <xs:element name="desc" type="tipoDescripcion"/>
+                            <xs:element name="cant" type="xs:positiveInteger"/>
+                            <xs:element name="precio" type="tipoPrecio"/>
+                            <xs:element name="importe" type="tipoPrecio"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="base" type="tipoPrecio"/>
+                <xs:element name="cuota_iva" type="tipoReal"/>
+                <xs:element name="total" type="tipoPrecio"/>
+            </xs:sequence>
+            <xs:attribute name="n_ped" type="tipoID" use="required"/>
+            <xs:attribute name="iva" type="tipoIVA" use="required"/>
+            <xs:attribute name="f_pago" type="tipoPago" use="required"/>
+            <xs:attribute name="moneda" type="xs:string" fixed="euro"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="factura">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="datos_empresa"/>
+                <xs:element ref="datos_cliente"/>
+                <xs:element ref="datos_factura"/>
+            </xs:sequence>
+            <xs:attribute name="n_fac" type="tipoID" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="poblacionType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="cod_postal"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+</xs:schema>

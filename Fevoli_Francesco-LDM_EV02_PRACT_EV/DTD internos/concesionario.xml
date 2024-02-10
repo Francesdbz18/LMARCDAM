@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE coches [
+        <!ELEMENT coches (modelo*)>
+        <!ELEMENT modelo (referencia, descripcion, modelos_relacionados?)>
+        <!ELEMENT referencia (#PCDATA)>
+        <!ELEMENT descripcion (#PCDATA)>
+        <!ELEMENT modelos_relacionados (modelo_ref+, motor_rel+)>
+        <!ELEMENT modelo_ref (#PCDATA)>
+        <!ELEMENT motor_rel (#PCDATA)>
+        ]>
+<coches>
+    <modelo>
+        <referencia>556</referencia>
+        <descripcion>No disponible.</descripcion>
+    </modelo>
+    <modelo>
+        <referencia>555</referencia>
+        <descripcion>Este modelo tiene un motor 1.998cc 16v. de cuatro cilindros, que desarrolla una potencia de 128 CV. Dispone de cambio manual ... el consumo medio de este monovolumen es 11 a los 100 km. El precio base es de 25.000. </descripcion>
+        <modelos_relacionados >
+            <modelo_ref>556</modelo_ref>
+            <modelo_ref>444</modelo_ref>
+            <motor_rel>556</motor_rel>
+        </modelos_relacionados>
+    </modelo>
+    <modelo>
+        <referencia>557</referencia>
+        <descripcion>No disponible</descripcion>
+    </modelo>
+    <modelo>
+        <referencia>154</referencia>
+        <descripcion>No disponible</descripcion>
+    </modelo>
+    <modelo>
+        <referencia>444</referencia>
+        <descripcion>Este modelo tiene un motor 2.000cc 16v. de cuatro cilindros con 128 CV. Dispone de cambio manual ... el consumo medio de este monovolumen es 11 a los 100 km. El precio base es de 50.000. </descripcion>
+        <modelos_relacionados>
+            <modelo_ref>154</modelo_ref>
+            <motor_rel>556</motor_rel>
+        </modelos_relacionados>
+    </modelo>
+</coches>

@@ -1,0 +1,22 @@
+<catalogoLibro xsi:noNamespaceSchemaLocation="catalogo.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <libro categoria="ficcion" enstock="true" revisor="">
+        <titulo>Las hijas de la criada</titulo>
+        <autor>Sonsoles Ónega</autor>
+        <fecha>
+            <anyo>2008</anyo>
+        </fecha>
+        <ISBN>978-8408280170</ISBN>
+        <editor>Planeta</editor>
+    </libro>
+    <libro categoria="noficcion" enstock="false" revisor="Luis Rodriguez">
+        <titulo>Lenguajes de marcas y sistemas de gestión de información</titulo>
+        <autor>J.M. Castro Ramos</autor>
+        <autor>J. R. Rodríguez Sánchez</autor>
+        <fecha>
+            <mes>Septiembre</mes>
+            <anyo>2012</anyo>
+        </fecha>
+        <ISBN>978-84-1545-217-1</ISBN>
+        <editor>Garceta</editor>
+    </libro>
+</catalogoLibro>

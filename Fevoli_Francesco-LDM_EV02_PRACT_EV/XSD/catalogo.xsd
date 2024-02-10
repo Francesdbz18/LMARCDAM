@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="catalogoLibro" type="catalogoLibroType"/>
+
+  <xs:complexType name="fechaType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="mes" minOccurs="0"/>
+      <xs:element name="anyo">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="libroType">
+    <xs:sequence>
+      <xs:element name="titulo">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="autor" maxOccurs="unbounded" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="fechaType" name="fecha"/>
+      <xs:element name="ISBN">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="editor">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="categoria" use="optional"/>
+    <xs:attribute type="xs:string" name="enstock" use="optional"/>
+    <xs:attribute type="xs:string" name="revisor" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="catalogoLibroType">
+    <xs:sequence>
+      <xs:element type="libroType" name="libro" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

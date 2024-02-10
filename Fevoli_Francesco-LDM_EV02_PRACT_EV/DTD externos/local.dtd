@@ -1,0 +1,25 @@
+<!ELEMENT local (factura+)>
+        <!ELEMENT factura (cliente, resguardo, alquileres?, compras?)>
+        <!ELEMENT cliente (nombre, apellidos, dni, telefono)>
+        <!ATTLIST cliente idCliente CDATA "1">
+        <!ELEMENT resguardo (forma_pago, importe_total)>
+        <!ELEMENT alquileres (alquiler+)>
+        <!ELEMENT compras (compra+)>
+        <!ELEMENT alquiler (patinete+, fecha_devolucion)>
+        <!ELEMENT compra (patinete+)>
+        <!ELEMENT patinete (modelo, marca, autonomia, usuarios_anteriores+, valoracion)>
+        <!ATTLIST patinete idPatinete CDATA "1">
+        <!ELEMENT nombre (#PCDATA)>
+        <!ELEMENT apellidos (#PCDATA)>
+        <!ELEMENT dni (#PCDATA)>
+        <!ELEMENT telefono (#PCDATA)>
+        <!ELEMENT idCliente (#PCDATA)>
+        <!ELEMENT forma_pago (#PCDATA)>
+        <!ELEMENT importe_total (#PCDATA)>
+        <!ELEMENT fecha_devolucion (#PCDATA)>
+        <!ELEMENT modelo (#PCDATA)>
+        <!ELEMENT marca (#PCDATA)>
+        <!ELEMENT autonomia (#PCDATA)>
+        <!ELEMENT usuarios_anteriores (nombre, apellidos)>
+        <!ELEMENT idPatinete (#PCDATA)>
+        <!ELEMENT valoracion (#PCDATA)>

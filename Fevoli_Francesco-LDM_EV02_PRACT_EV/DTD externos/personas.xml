@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE personas SYSTEM "DTDpersonas.dtd">
+<personas>
+    <persona>
+        <nombre>Juan</nombre>
+        <apellidos>Pardo</apellidos>
+        <telefono>656696571</telefono>
+        <nacimiento dia="3" mes="2" anyo="1969"></nacimiento>
+        <direccion>
+            <calle>Caoba, 1</calle>
+            <ciudad>Madrid</ciudad>
+            <codigo_postal>28005</codigo_postal>
+        </direccion>
+    </persona>
+    <persona>
+        <nombre>María</nombre>
+        <apellidos>Lionza</apellidos>
+        <telefono>656696572</telefono>
+        <direccion>
+            <calle>Alcalá, 420</calle>
+            <ciudad>Madrid</ciudad>
+            <codigo_postal>28006</codigo_postal>
+        </direccion>
+    </persona>
+</personas>
