@@ -4,8 +4,8 @@
     <xs:complexType>
       <xs:simpleContent>
         <xs:extension base="xs:integer">
-        <xs:attribute name="escala" type="xs:string"> 
-          <xs:simpleType name="TipoEscala">        
+        <xs:attribute name="escala">
+          <xs:simpleType>
           <xs:restriction base="xs:string">
             <xs:enumeration value="Kelvin"/>
             <xs:enumeration value="Celsius"/>
