@@ -18,5 +18,5 @@
       * Nombre : <xsl:value-of select="Nombre" /><br/>
       * Precio ud. : <xsl:value-of select="PrecioUd" />€<br/>
   </xsl:template>
-  
+
 </xsl:stylesheet>
