@@ -1,0 +1,44 @@
+﻿<bibliografia>
+    <conferencia>
+        <titulo>AA AI '113</titulo>
+        <articulo id="a">
+            <titulo>Documento 1</titulo>
+            <autor>
+                <nombre_completo>Ho Chi</nombre_completo>
+            </autor>
+            <ref to="b" />
+        </articulo>
+        <articulo id="b">
+            <titulo>Documento 2</titulo>
+            <autor>
+                <nombre>Michael</nombre>
+                <apellido>Smith</apellido>
+            </autor>
+        </articulo>
+    </conferencia>
+    <revista>
+        <titulo>Journal of AI</titulo>
+        <articulo id="c">
+            <titulo>Documento 3</titulo>
+            <autor>
+                <apellido>Smith</apellido>
+                <nombre>Michael</nombre>
+            </autor>
+            <autor>
+                <nombre_completo>Ho Chi</nombre_completo>
+            </autor>
+            <ref to="a" />
+            <ref to="b" />
+        </articulo>
+    </revista>
+    <conferencia>
+        <titulo>AA AI '114</titulo>
+        <articulo id="d">
+            <titulo>Documento 4</titulo>
+            <autor>
+                <nombre_completo>Ho Chi</nombre_completo>
+            </autor>
+            <ref to="c" />
+        </articulo>
+    </conferencia>
+</bibliografia>
