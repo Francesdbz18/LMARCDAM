@@ -1,4 +1,6 @@
-1. for $country in //country
+1. Nombres de los países con sus poblaciones y los nombres de sus capitales.
+
+for $country in //country
 return
 <result>
   <country>{$country/name/text()}</country>
@@ -6,53 +8,98 @@ return
   <population>{$country/@population}</population>
     </result>
 
-2. for $country in //country
+2. Nombres de los países que limitan con 5 o más países.
+
+for $country in //country
 where count($country/border) >= 5
 return $country/name/text()
 
-3. //country[count(religions)>3]/@name
+3. Enumera las religiones ordenando por nombre. Dentro de cada nodo “religión”, enumera los países cuya religión principal es esa por porcentaje (no religión oficial). Ordena los países por porcentaje en orden descendente y por nombre del país en orden ascendente.
+let $religiones := doc("factbook")//religions/religion
+for $religion in $religiones
+let $nombreReligion := $religion/name/text()
+let $paises :=
+    for $pais in doc("factbook")//country[.//religion[1]/@percentage > 50 and .//religion[1]/name/text() = $nombreReligion]
+    let $porcentaje := $pais//religion[1]/@percentage
+    order by xs:decimal($porcentaje) descending, $pais/name/text()
+    return <pais>
+                <nombre>{$pais/name/text()}</nombre>
+                <porcentaje>{$porcentaje}</porcentaje>
+           </pais>
+order by $nombreReligion
+return
+    <religion>
+        <nombre>{$nombreReligion}</nombre>
+        {$paises}
+    </religion>
 
-4. for $country in //country[religions = 'Buddhist']
+
+4. Listado de países en los que se practica el budismo. Ordena los países por población en orden ascendente.
+
+for $country in //country[religions = 'Buddhist']
 order by $country/population ascending
 return $country/name/text()
 
-5. <resultado>
-{
-    for $country in doc('factbook')/mondial/country
-    where count(distinct-values($country/encompassed/@continent)) >= 2
-    let $countryName := $country/name
-    order by $countryName
-    return
-    <nombrePais>{$countryName}{
-        for $continentId in distinct-values($country/encompassed/@continent)
-        let $continent := doc('factbook')/mondial/continent[@id = $continentId]/@name
-        order by $continent
-        return
-        <nombreContinente nombre="{$continent}" porcentaje="{$country/encompassed[@continent = $continentId]/@percentage}"/>
-    }</nombrePais>
-}
-</resultado>
+5. Informe de los países que se encuentran a ambos lados de dos (o más) continentes. Incluir como contenido qué continentes ocupa el país utilizando la siguiente estructura:
+   <resultado>
+    <nombrePais=‘…’>
+    <nombreContinente=‘…’ porcentaje=‘…’/>
+    ...
+    </nombrePais>
+    ...
+   </resultado>
+   • Dentro de <resultado> listar los elementos <nombrePais> en el orden del
+   documento.
+   • Dentro del nodo <nombrePais> listar los nodos <nombreContinente> en el
+   orden del documento.
 
-6. for $city in doc('factbook')/mondial/country/city
-let $cityName := $city/name/text()
-let $population := $city/population[@year = max($city/population/@year)]/text()
-let $country := $city/../name/text()
+   <resultado>
+      {
+          for $pais in doc('factbook')/mondial/country
+          where count(distinct-values($pais/encompassed/@continent)) >= 2
+          let $nombrePais := $pais/name/text()
+          order by $nombrePais
+          return
+          <nombrePais nombre="{$nombrePais}">{
+              for $continentId in distinct-values($pais/encompassed/@continent)
+              let $continent := doc('factbook')/mondial/continent[@id = $continentId]/@name
+              order by $continent
+              return
+              <nombreContinente nombre="{$continent}" porcentaje="{$pais/encompassed[@continent = $continentId]/@percentage}"/>
+          }</nombrePais>
+      }
+      </resultado>
+
+6. Listado ciudades con el nombre de la ciudad, un atributo población y otro atributo país ordenado por orden de población en orden descendente
+
+for $ciudad in doc('factbook')/mondial/country/city
+let $cityName := $ciudad/name/text()
+let $population := $ciudad/population[@year = max($ciudad/population/@year)]/text()
+let $country := $ciudad/../name/text()
 order by number($population) descending
 return <ciudad nombre="{$cityName}" poblacion="{$population}" pais="{$country}"/>
 
-7 .//country[border/@country = 'f0_1432']/@name
+7. Nombres de todos los países que tienen frontera con Uganda.
 
-8. //country[count(religions)>3]/@name
+//country[border/@country = 'f0_1432']/@name
 
-9. for $province in //province[@country = 'f0_777']
-where $province/city/located_at/@type = 'sea' or $province/city/located_at/@type = 'lake'
-return $province/city/name/text()
+8. Nombres de los países con más de 3 religiones.
 
-10. //country[@population > 20000000 and @total_area < 100000]/name/data()
+//country[count(religions)>3]/@name
 
-11. //city[located_at[@type='lake']]/name/text()
+9. Nombres de las islas pertenecientes a Canadá.
 
-12. <countries>
+10. Nombres de los países que tienen más de 20 millones de habitantes y un área menor de 100.000 Km2.
+
+//country[@population > 20000000 and @total_area < 100000]/name/data()
+
+11. Nombres de las ciudades que están en las orillas de un lago.
+
+//city[located_at[@type='lake']]/name/text()
+
+12. Listado de países por población, ciudades dentro de cada país ordenadas según población, e idiomas dentro de cada país según porcentaje.
+
+<countries>
 {
     for $country in //country
     order by $country/population descending
@@ -81,7 +128,9 @@ return $province/city/name/text()
 }
 </countries>
 
-13. <idiomas>
+13. Devuelve un elemento idiomas con una lista de elementos idioma, ordenados alfabéticamente. Cada idioma del documento debe aparecer sólo una vez.
+
+<idiomas>
 {
     for $language in distinct-values(//languages)
     order by $language
@@ -89,39 +138,61 @@ return $province/city/name/text()
 }
 </idiomas>
 
-14. //country[@name = 'Italy']/province/@name
+14. Nombres de las provincias de Italia
 
-15. //country[count(languages) > 5]/@name
+//country[@name = 'Italy']/province/@name
 
-16. //river[to/@type = 'river']/@name
+15. Nombres de los países donde se hablan más de 5 idiomas.
 
-17. //country[@name = 'Switzerland']/province/city[@located_at/@type = 'lake']/name/data()
+//country[count(languages) > 5]/@name
 
-18.for $ciudades in //city
+16. Ríos que desembocan en ríos.
+
+//river[to/@type = 'river']/@name
+
+17. Lagos de Suiza.
+
+18.  Nombres de las ciudades que tienen más de 6.000.000 de habitantes y están en la orilla de un río.
+
+for $ciudades in //city
 where $ciudades/population > 6000000 and $ciudades/located_at[@type='river']
 return $ciudades/name/data()
 
-19.//country[number(@inflation) > 70]/@name/data()
+19. Países con una inflación mayor de 70.
 
-20. //country[encompassed/@continent = 'f0_123' and encompassed/@continent= 'f0_119' ]/name
+//country[number(@inflation) > 70]/@name/data()
 
-21. for $organization in doc('factbook')//organization
-where contains($organization/@name, 'United Nations')
+20. Países cuyo territorio está en Europa y en Asia.
+
+//country[encompassed/@continent = 'f0_123' and encompassed/@continent= 'f0_119' ]/name
+
+21. Utilizando la función contains() obtén los países miembros de la OTAN.
+
+for $organization in doc('factbook')//organization
+where contains($organization/@name, 'North Atlantic Treaty Organization')
 for $member in $organization/members/@country
 let $memberId := $member
 return doc('factbook')//country[@id = $memberId]/name/text()
 
-22. //country[@name='Mauritania']/city/locate_at[type='desert']/name
+22. Desiertos situados en Mauritania.
 
-23. let $caribbeanCountry := doc('factbook')//sea[contains(@name, 'Caribbean Sea')]/located/@country
+23. Utilizando la función contains() obtén los nombres de las islas del mar Caribe.
+
+let $caribbeanCountry := doc('factbook')//sea[contains(@name, 'Caribbean Sea')]/located/@country
 for $island in doc('factbook')//island
 where $island/located/@country = $caribbeanCountry
 return $island/@name
 
-24. distinct-values(//country[@population > 50000000]/@government)
+24. Utilizando la función distinct-values() obtén las diferentes formas de gobierno de los países con más de 50.000.000 de habitantes.
 
-25. //river[../country/@continent = 'Africa']
+distinct-values(//country[@population > 50000000]/@government)
 
-26. max(//country[@name="Spain"]/province/city/population)
+25. Ríos de países de África.
 
-27. //country[@name='Spain']/province/city[population=max(//country[@name="Spain"]/province/city/population)]/name/data()
+26. Usando la función max() obtén la cantidad de habitantes de la ciudad española con más habitantes
+
+max(//country[@name="Spain"]/province/city/population)
+
+27. Nombre de la ciudad española con más habitantes
+
+//country[@name='Spain']/province/city[population=max(//country[@name="Spain"]/province/city/population)]/name/data()

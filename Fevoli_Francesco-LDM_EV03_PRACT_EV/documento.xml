@@ -1,10 +1,10 @@
-<documento>
-  <comentario>Reflexión</comentario>
-  <principal> "La <ref to="p1"/> y la <ref to="p2"/> son indivisibles. La revolución informática es <ref to="p3"/> sin la <ref to="p4"/> y la <ref to="p5"/> es <ref to="p3"/> sin la <ref to="p2"/> de <ref to="p1"/>". <autor>Kofi Annan</autor>.
-  </principal>
-  <parte id="p1">información</parte>
-  <parte id="p2">libertad</parte>
-  <parte id="p3">inimaginable</parte>
-  <parte id="p4">democracia</parte>
-  <parte id="p5">verdadera <ref to="p4"/></parte>
-</documento>
+  <documento>
+    <comentario>Reflexión</comentario>
+    <principal> "La <ref to="p1"/> y la <ref to="p2"/> son indivisibles. La revolución informática es <ref to="p3"/> sin la <ref to="p4"/> y la <ref to="p5"/> es <ref to="p3"/> sin la <ref to="p2"/> de <ref to="p1"/>". <autor>Kofi Annan</autor>.
+    </principal>
+    <parte id="p1">información</parte>
+    <parte id="p2">libertad</parte>
+    <parte id="p3">inimaginable</parte>
+    <parte id="p4">democracia</parte>
+    <parte id="p5">verdadera <ref to="p4"/></parte>
+  </documento>
